@@ -1,0 +1,106 @@
+<html>
+    <head>
+        <title>sign up</title>
+        <link rel="stylesheet" type="text/css" href="sign_up.css">
+        <script type="text/javascript" src="sign_up.js"> </script>
+    </head>
+    <body>
+      <div class="frm">
+        <form name="myForm"  onsubmit="return validateForm()" method="post">
+            <div class="container">
+              <h1 style="color: rgb(12, 82, 72);">Sign Up</h1>
+              <p style="color: rgb(36, 77, 40);">Please fill in this form to create an account.</p>
+              <hr>
+               
+              <label style="margin-top: 100000px; color: rgb(141, 24, 53);"  ><b> First name</b> 
+              <div class="myclass">
+              <input   type="text" placeholder="Enter first name"  name="fname" id="fname">
+              <span id="firstname" style="margin-left: 80px;" ></span> </label>
+            </div> 
+              <br>
+               
+               <label style="color: rgb(141, 24, 53);"><b>Last name</b> </label>
+               <div class="myclass">
+               <input class="myclass" type="text" placeholder="Enter last name" name="lname"  >
+               <span id="lastname" style="margin-left: 80px;" ></span>
+               </div> 
+               <br>
+
+              <label style="color: rgb(141, 24, 53);"><b>Email</b></label>
+              <div class="myclass">
+              <input class="myclass" type="text" placeholder="Enter Email" name="email" >
+              <span id="email" style="margin-left: 80px;" ></span>
+              </div>
+              <br>
+              <label style="color: rgb(141, 24, 53);"><b>Password</b> </label>
+              <div class="myclass">
+              <input class="myclass" type="password" placeholder="Enter Password" name="password" >
+              <span id="password" style="margin-left: 80px;" ></span>
+              </div>
+              <br>
+              <label style="color: rgb(141, 24, 53);"><b>Repeat Password</b></label>
+              <div class="myclass">
+              <input  class="myclass" type="password" placeholder="Repeat Password" name="r_password" > 
+              </div>
+          
+              <br>
+              <label style="color: rgb(141, 24, 53);"><b>Gender</b></label>
+              <br>
+             
+              <input class="myclass" type="radio" name="gender" value="male" checked> Male<br>
+              <input class="myclass"  type="radio" name="gender" value="female"> Female<br>
+              <input class="myclass" type="radio" name="gender" value="other"> Other  
+              
+            <br>
+            
+            <label style="color: rgb(141, 24, 53);"><b>Vechile you have </b></label>
+            
+            <select class="myclass" name="vech">
+              <option value="volvo">Volvo</option>
+              <option value="saab">Saab</option>
+              <option value="opel">Opel</option>
+              <option value="audi">Audi</option>
+            </select> 
+            
+             <br>
+            
+              <label style="color: rgb(141, 24, 53);" for="start"><b>Birthday:</b></label>
+
+              <input class="myclass" type="date" id="start" name="birth"
+                     value=""
+                     min="1990-01-01" max="2050-12-31">
+          <br>
+              
+          <label style="color: rgb(141, 24, 53);" ><b>message:</b></label><br>
+          <textarea rows="4" cols="100" name="msg">
+                
+            </textarea>
+        <br>
+              <p>By creating an account you agree to our <a href="#" style="color:rgb(71, 12, 128)">Terms & Privacy</a>.</p>
+              <label>
+                <br>
+                <input type="checkbox" checked="checked"  style="margin-bottom:15px"> Remember me
+              </label>
+          
+              <div class="clearfix">
+                <button type="button" class="cancelbtn" onclick="validateForm()">Cancel</button>
+                <button type="submit" class="signupbtn">Sign Up</button>
+              </div>
+            </div>
+          </form> 
+      </div>
+          <table id="customers">
+            <tr>
+              <th>First name</th>
+              <th>Last name</th>
+              <th>Email</th>
+              <th>Gender</th>
+              <th>vehicle</th>
+              <th>Birthday</th>
+            </tr>
+            
+          </table>
+
+    </body>
+</html>
+
