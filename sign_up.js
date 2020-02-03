@@ -1,14 +1,12 @@
-
-var users=[];
-var counter =1;
-var error={};
-var check =false;
+var users=[];  // To Store all the users who filled the form
+var counter =1;   // counter variable to provide unique name for local stroage , key-value pair 
+var error={};    //  each field mapped to   
+var check =false;  // boolean variable to identify is form
 
 function validate(obj)
 {
         //first name validation
     if (obj.fname == "") {
-      console.log("hellooo222");
       error.fname=true;   
     }
          //last name validation 
@@ -22,7 +20,7 @@ function validate(obj)
       {  
        error.email=true;
         }  
-          //password vaalidation
+          //password vaalidation if len less than 6
 
           if(obj.password.length<6){  
             error.password=true;    
@@ -33,17 +31,18 @@ function validate(obj)
         else{  
          error.password=true
         }    
+
        
-       /* for(i in error)
+     for(i in error)
          { 
-           console.log(i.second);
-           if(i==true)
+           
+           if(error[i]==true)
             { 
                return false; 
               }
           }  
         return true;     
-    */
+    
 }
 
 function insert(obj)
@@ -111,9 +110,9 @@ function show_error()
     if(error.fname)
     {
       document.getElementById("firstname").innerHTML = "Requried Field cannot be left blank";
-    //  document.getElementById("firstname").style.borderColor = "red";  ???
+ //     document.getElementById("firstname").style.borderColor = "red";  
    //  console.log( document.getElementById("firstname").style.borderColor);
- //  document.getElementById("firstname").className = "err";
+   document.getElementById("fname").className = "err";
     }
     else 
     {
@@ -146,4 +145,3 @@ function show_error()
       document.getElementById("password").innerHTML = "";
     }
 } 
-
