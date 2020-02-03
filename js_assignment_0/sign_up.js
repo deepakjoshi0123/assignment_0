@@ -8,7 +8,7 @@ function validate(obj)
 {
         //first name validation
     if (obj.fname == "") {
-      console.log("hellooo222");
+     
       error.fname=true;   
     }
          //last name validation 
@@ -33,17 +33,17 @@ function validate(obj)
         else{  
          error.password=true
         }    
-       
-       /* for(i in error)
+       //checking form input data if any field  have error then return false 
+        for(i in error)
          { 
-           console.log(i.second);
-           if(i==true)
+           if(error[i]==true)
             { 
                return false; 
               }
           }  
+          // if everything is correct add data to table 
         return true;     
-    */
+    
 }
 
 function insert(obj)
@@ -100,9 +100,6 @@ function validateForm() {
     
 }
 
-
-
-
 //working properly
 
 function show_error()
@@ -111,7 +108,7 @@ function show_error()
     if(error.fname)
     {
       document.getElementById("firstname").innerHTML = "Requried Field cannot be left blank";
-    //  document.getElementById("firstname").style.borderColor = "red";  ???
+      document.getElementById("firstname").style.borderColor = "red";  
    //  console.log( document.getElementById("firstname").style.borderColor);
  //  document.getElementById("firstname").className = "err";
     }
