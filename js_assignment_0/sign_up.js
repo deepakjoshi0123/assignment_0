@@ -2,20 +2,18 @@
 var users=[];
 var counter =1;
 var error={};
-var check =true;
+var check =false;
 
 function validate(obj)
 {
         //first name validation
     if (obj.fname == "") {
       console.log("hellooo222");
-      error.fname=true;
-     
+      error.fname=true;   
     }
          //last name validation 
     if (obj.lname == "") {
-     error.lname=true;
-        
+     error.lname=true;   
       }
       //email validation
       var atposition=obj.email.indexOf("@");  
@@ -23,29 +21,35 @@ function validate(obj)
       if (atposition<1 || dotposition<atposition+2)
       {  
        error.email=true;
-        
         }  
           //password vaalidation
 
           if(obj.password.length<6){  
-            error.password=true;
-           
+            error.password=true;    
           }
         if(obj.password==obj.r_password){  // do nothing 
             
         }  
         else{  
-         error.password=true;
-         
+         error.password=true
         }    
-        check=true;
        
-  
+       /* for(i in error)
+         { 
+           console.log(i.second);
+           if(i==true)
+            { 
+               return false; 
+              }
+          }  
+        return true;     
+    */
 }
 
 function insert(obj)
 {
-       if(check==true)
+  console.log(validate(obj));
+       if(validate(obj)==true)
         {
         var table = document.getElementById("customers");
         var row = table.insertRow(1);
