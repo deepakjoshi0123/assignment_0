@@ -2,20 +2,18 @@
 var users=[];
 var counter =1;
 var error={};
+var check =true;
+
 function validate(obj)
 {
         //first name validation
     if (obj.fname == "") {
-      //alert(" First Name must be filled out");
-      console.log("hellooo222")
-     // document.getElementById("firstname").innerHTML = "Requried Field cannot be left blank";
-     document.getElementById('firstname').style.Color = "red";
-     
+      console.log("hellooo222");
       error.fname=true;
+     
     }
          //last name validation 
     if (obj.lname == "") {
-     // document.getElementById("lastname").innerHTML = "Requried Field cannot be left blank";
      error.lname=true;
         
       }
@@ -24,36 +22,30 @@ function validate(obj)
       var dotposition=obj.email.lastIndexOf(".");  
       if (atposition<1 || dotposition<atposition+2)
       {  
-       // document.getElementById("email").innerHTML = "Invalid Email";
        error.email=true;
         
         }  
           //password vaalidation
 
           if(obj.password.length<6){  
-            //document.getElementById("password").innerHTML = "password should be greater than 6 char";
             error.password=true;
-            
+           
           }
-        if(obj.password==obj.r_password){  
+        if(obj.password==obj.r_password){  // do nothing 
             
         }  
         else{  
-         // document.getElementById("firstname").innerHTML = "password should be same";
          error.password=true;
          
         }    
+        check=true;
+       
   
 }
 
-function show_users()
-{
-  //  console.log('hello');
-    set();
-}
 function insert(obj)
 {
-       if(validate(obj)==true)
+       if(check==true)
         {
         var table = document.getElementById("customers");
         var row = table.insertRow(1);
@@ -72,11 +64,13 @@ function insert(obj)
         cell6.innerHTML = obj.birth;
         }
       users.push(obj);
+      console.log(obj,"inside insert()");
     //  localStorage.setItem('user'+counter,obj);
       counter++;
 }
 function set()
 {
+  console.log( document.getElementById("firstname").style.borderColor);
     var obj = {};
     obj.fname = document.forms["myForm"]["fname"].value;
     obj.lname = document.forms["myForm"]["lname"].value;
@@ -87,8 +81,8 @@ function set()
     obj.vech = document.forms["myForm"]["vech"].value;
     obj.birth = document.forms["myForm"]["birth"].value;
     obj.msg = document.forms["myForm"]["msg"].value;
-    users.push(obj);
-
+   // users.push(obj);
+    console.log("insdie set()");
     insert(obj);
 }
 
@@ -97,31 +91,55 @@ function validateForm() {
     setTimeout(()=>{},5000);
     event.preventDefault();
   //  console.log(users);
-      show_users();
-      show_error();
+      set();
+      show_error();  // validating at end 
     
 }
 
+
+
+
+//working properly
+
 function show_error()
 {
-  {
+  
     if(error.fname)
     {
       document.getElementById("firstname").innerHTML = "Requried Field cannot be left blank";
-      document.getElementById('firstname').style.borderColor = "red";
+    //  document.getElementById("firstname").style.borderColor = "red";  ???
+   //  console.log( document.getElementById("firstname").style.borderColor);
+ //  document.getElementById("firstname").className = "err";
+    }
+    else 
+    {
+      document.getElementById("firstname").innerHTML = "";
     }
     if(error.lname)
     {
       document.getElementById("lastname").innerHTML = "Requried Field cannot be left blank";
+
+    }
+    else 
+    {
+      document.getElementById("lastname").innerHTML = "";
     }
     if(error.email)
     {
       document.getElementById("email").innerHTML = "Invalid email";
     }
+    else 
+    {
+      document.getElementById("email").innerHTML = "";
+    }
+    
     if(error.password)
     {
       document.getElementById("password").innerHTML = "invalid password";
     }
-    
-  }
-}
+    else 
+    {
+      document.getElementById("password").innerHTML = "";
+    }
+} 
+
