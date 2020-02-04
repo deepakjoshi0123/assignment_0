@@ -1,113 +1,121 @@
-.frm{
-    width:50%;
-    margin-left: 500px;
+.frm {
+  width: 50%;
+  margin-left: 500px;
 }
 
-input{
-    margin-left: 100px;
+input {
+  margin-left: 100px;
 }
 
-label{
-    margin-left: 10px;
-}
-  
-table, td {
-    border: 1px solid black;
-  }
-  #customers {
-    border-collapse: collapse;
-    width: 100%;
-  }
-  
-  #customers td, #customers th {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-  
-  #customers tr:hover {background-color: #ddd;}
-  
-  #customers th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: rgb(5, 83, 128);
-    color: white;
-  }
-
-  input[type=text], input[type=password] {
-    width: 80%;
-    padding: 15px;
-    margin: 5px 0 22px 0;
-    background: #f1f1f1;
-    border-radius: 25px;
-  }
-  
-  input[type=text]:focus, input[type=password]:focus {
-    background-color: #ddd;
-    outline: none;
-  }
-  
-  hr {
-    border: 1px solid #f1f1f1;
-    margin-bottom: 10px;
-  }
-  
-  
-  button {
-    background-color: rgb(76, 175, 153);
-    color: white;
-    padding: 14px 20px;
-    margin: 50px 100px;
-    width: 30%;
-  }
-  .cancelbtn {
-    padding: 14px 20px;
-    background-color: #662aaa;
-  }
-  
-  .cancelbtn, .signupbtn {
-    float: left;
-    width: 25%;
-  }
-  
-  .container {
-    padding: 16px;
-    background-color: rgb(140, 210, 223);
-    border-radius: 25px;
-  }
-  
-.myclass{
-   margin-left: 200px;
-   margin-top: 0;
+label {
+  margin-left: 10px;
 }
 
-h1{
+table,
+td {
+  border: 1px solid black;
+}
+#customers {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td,
+#customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:hover {
+  background-color: #ddd;
+}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: rgb(5, 83, 128);
+  color: white;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 80%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  background: #f1f1f1;
+  border-radius: 25px;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: rgb(76, 175, 153);
+  color: white;
+  padding: 14px 20px;
+  margin: 50px 100px;
+  width: 30%;
+}
+.cancelbtn {
+  padding: 14px 20px;
+  background-color: #662aaa;
+}
+
+.cancelbtn,
+.signupbtn {
+  float: left;
+  width: 25%;
+}
+
+.container {
+  padding: 16px;
+  background-color: rgb(140, 210, 223);
+  border-radius: 25px;
+}
+
+.myclass {
+  margin-left: 200px;
+  margin-top: 0;
+}
+
+h1 {
   color: rgb(12, 82, 72);
 }
-p{
+p {
   color: rgb(36, 77, 40);
 }
-label{
-  margin-top: 100000px; color: rgb(141, 24, 53);
+label {
+  margin-top: 100000px;
+  color: rgb(141, 24, 53);
 }
-a{
-  color:rgb(71, 12, 128);
+a {
+  color: rgb(71, 12, 128);
 }
 
-textarea{
+textarea {
   border-radius: 10px;
   margin-left: 200px;
-  width:50%
+  width: 50%;
 }
 
-.err{
+.err {
   padding: 1px 1px 1px 1px;
-  border-style:solid;
-  border-color:rgb(107, 4, 4);
-
+  border-style: solid;
+  border-color: rgb(107, 4, 4);
 }
 
-.captcha
-{
+.captcha {
   margin-left: 100px;
+}
+span {
+  margin-left: 80px;
 }
