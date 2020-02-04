@@ -22,13 +22,13 @@ function validate(obj)
       {  
        error.email=true;
         }  
-          //password vaalidation
+          //password vaalidation is less than 6
 
           if(obj.password.length<6){  
             error.password=true;    
           }
         if(obj.password==obj.r_password){  // do nothing 
-            
+           console.log("password same") 
         }  
         else{  
          error.password=true
@@ -108,39 +108,45 @@ function show_error()
     if(error.fname)
     {
       document.getElementById("firstname").innerHTML = "Requried Field cannot be left blank";
-      document.getElementById("firstname").style.borderColor = "red";  
-   //  console.log( document.getElementById("firstname").style.borderColor);
- //  document.getElementById("firstname").className = "err";
+      document.getElementById("fname").className = "err";
     }
     else 
     {
+      document.getElementById("fname").className = "myclass";
       document.getElementById("firstname").innerHTML = "";
+     
     }
     if(error.lname)
     {
+      document.getElementById("lname").className = "err";
       document.getElementById("lastname").innerHTML = "Requried Field cannot be left blank";
 
     }
     else 
     {
       document.getElementById("lastname").innerHTML = "";
+      document.getElementById("lname").className = "myclass";
     }
     if(error.email)
     {
+      document.getElementById("myemail").className = "err";
       document.getElementById("email").innerHTML = "Invalid email";
     }
     else 
     {
       document.getElementById("email").innerHTML = "";
+      document.getElementById("myemail").className = "myclass";
     }
     
     if(error.password)
     {
+      document.getElementById("pass_word").className = "err";
       document.getElementById("password").innerHTML = "invalid password";
     }
     else 
     {
       document.getElementById("password").innerHTML = "";
+      document.getElementById("pass_word").className = "myclass";
     }
 } 
 
