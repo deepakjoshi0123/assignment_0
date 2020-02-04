@@ -1,12 +1,13 @@
-var users=[];  // To Store all the users who filled the form
-var counter =1;   // counter variable to provide unique name for local stroage , key-value pair 
-var error={};    //  each field mapped to   
-var check =false;  // boolean variable to identify is form
+
+var users=[]; // To Store all the users who filled the form
+var counter =1;  // counter variable to provide unique name for local stroage , key-value pair 
+var error={};
 
 function validate(obj)
 {
         //first name validation
     if (obj.fname == "") {
+     
       error.fname=true;   
     }
          //last name validation 
@@ -20,35 +21,37 @@ function validate(obj)
       {  
        error.email=true;
         }  
-          //password vaalidation if len less than 6
+          //password vaalidation is less than 6
 
           if(obj.password.length<6){  
             error.password=true;    
           }
         if(obj.password==obj.r_password){  // do nothing 
-            
+           console.log("password same") 
         }  
         else{  
          error.password=true
         }    
-
-       
-     for(i in error)
+       //checking form input data if any field  have error then return false 
+        for(i in error)
          { 
-           
            if(error[i]==true)
             { 
                return false; 
               }
           }  
+          // if everything is correct add data to table 
         return true;     
-    
 }
 
 function insert(obj)
 {
-  console.log(validate(obj));
-       if(validate(obj)==true)
+  var isvalid= validate(obj) ;
+  if(isvalid==true )
+    {
+       var check=confirm("Are you sure to submit data"); // boolean variable to identify is form
+    }
+       if(isvalid==true && check==true)       // insert only if all inputs are valid and user wants to insert
         {
         var table = document.getElementById("customers");
         var row = table.insertRow(1);
@@ -67,9 +70,8 @@ function insert(obj)
         cell6.innerHTML = obj.birth;
         }
       users.push(obj);
-      console.log(obj,"inside insert()");
     //  localStorage.setItem('user'+counter,obj);
-      counter++;
+      counter++; // creating unique id for each user 
 }
 function set()
 {
@@ -84,23 +86,18 @@ function set()
     obj.vech = document.forms["myForm"]["vech"].value;
     obj.birth = document.forms["myForm"]["birth"].value;
     obj.msg = document.forms["myForm"]["msg"].value;
-   // users.push(obj);
-    console.log("insdie set()");
+    users.push(obj);
     insert(obj);
 }
 
 function validateForm() {
-  error.fname=false;error.lname=false;error.email=false;error.password=false;  
-    setTimeout(()=>{},5000);
+    error.fname=false;error.lname=false;error.email=false;error.password=false;   //intailly intinalizse all fields with false 
     event.preventDefault();
-  //  console.log(users);
       set();
-      show_error();  // validating at end 
+      show_error();  // error msg at the  end 
+      submitUserForm();
     
 }
-
-
-
 
 //working properly
 
@@ -110,38 +107,59 @@ function show_error()
     if(error.fname)
     {
       document.getElementById("firstname").innerHTML = "Requried Field cannot be left blank";
- //     document.getElementById("firstname").style.borderColor = "red";  
-   //  console.log( document.getElementById("firstname").style.borderColor);
-   document.getElementById("fname").className = "err";
+      document.getElementById("fname").className = "err";
     }
     else 
     {
+      document.getElementById("fname").className = "myclass";
       document.getElementById("firstname").innerHTML = "";
+     
     }
     if(error.lname)
     {
+      document.getElementById("lname").className = "err";
       document.getElementById("lastname").innerHTML = "Requried Field cannot be left blank";
 
     }
     else 
     {
       document.getElementById("lastname").innerHTML = "";
+      document.getElementById("lname").className = "myclass";
     }
     if(error.email)
     {
+      document.getElementById("myemail").className = "err";
       document.getElementById("email").innerHTML = "Invalid email";
     }
     else 
     {
       document.getElementById("email").innerHTML = "";
+      document.getElementById("myemail").className = "myclass";
     }
     
     if(error.password)
     {
+      document.getElementById("pass_word").className = "err";
       document.getElementById("password").innerHTML = "invalid password";
     }
     else 
     {
       document.getElementById("password").innerHTML = "";
+      document.getElementById("pass_word").className = "myclass";
     }
-} 
+}
+
+
+function submitUserForm() {
+  var response = grecaptcha.getResponse();
+  if(response.length == 0) {
+      document.getElementById('g-recaptcha-error').innerHTML = '<span style="color:red;">This field is required.</span>';
+      return false;
+  }
+  return true;
+}
+
+function verifyCaptcha() {
+  document.getElementById('g-recaptcha-error').innerHTML = '';
+}
+
