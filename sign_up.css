@@ -88,10 +88,10 @@ button {
 }
 
 h1 {
-  color: rgb(12, 82, 72);
+  color: rgb(7, 10, 43);
 }
 p {
-  color: rgb(36, 77, 40);
+  color: rgb(15, 12, 65);
 }
 label {
   margin-top: 100000px;
@@ -118,4 +118,7 @@ textarea {
 }
 span {
   margin-left: 80px;
+}
+.sus {
+  color: #175f05;
 }

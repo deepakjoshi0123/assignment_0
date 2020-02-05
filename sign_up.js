@@ -1,24 +1,24 @@
 // function
 function selectElement(name) {
-  console.log("TEST");
+  //console.log("TEST");
   return document.getElementById(name);
 }
 
-var  f_name = "firstname";
-var  f_input = "fname"; 
+var form_suc = "success";
 
-var  customers = "customers";
+var f_name = "firstname";
+var f_input = "fname";
 
-var  l_name = "lastname";
-var  l_input="lname";
+var customers = "customers";
+//error
+var l_name = "lastname";
+var l_input = "lname";
+///
+var inp_email = "email1";
+var email = "email";
 
-var  inp_email="email1";
-var  email = "email";  
-
-var  pass = "password";
-var  pas_inp = ""
-
-var  r_pass = "r_password";   
+var pass = "password";
+var pas_inp = "pass_word";
 
 var handleSignup = {
   // variables
@@ -26,13 +26,19 @@ var handleSignup = {
   counter: 1, // this.counter variable to provide unique name for local stroage , key-value pair
   error: {}, //to map error with respecting field
 
-  //constants
+  sucess_for: selectElement(form_suc),
+  //first name and it's css properties
   firstname: selectElement(f_name),
-  firstinput: selectElement(fname),
+  firstinput: selectElement(f_input),
+  //last name and it's css properties
   lastname: selectElement(l_name),
+  lastinput: selectElement(l_input),
+  //email and it's css properties
   email: selectElement(email),
+  input_email: selectElement(inp_email),
+  //pass and it's css properties
   password: selectElement(pass),
-  reppass: selectElement(r_pass),
+  reppass: selectElement(pas_inp),
 
   /** checks postion of @ and . in email and predicts for valid or invalid mail
    *  Returns boolean value , true for valid mail false for invalid mail
@@ -41,8 +47,6 @@ var handleSignup = {
    */
 
   valid_email: function(email) {
-    // console.log((firstname.value = "kartikattri"));
-
     var atposition = email.indexOf("@");
     var dotposition = email.lastIndexOf(".");
     if (atposition < 1 || dotposition < atposition + 2) return true;
@@ -55,6 +59,7 @@ var handleSignup = {
    */
 
   validate: function(obj) {
+    console.log(this.lastinput); // why null ??????????????
     //first name validation
     if (obj.fname === "") {
       this.error.fname = true;
@@ -106,13 +111,20 @@ var handleSignup = {
       cell4.innerHTML = obj.gender;
       cell5.innerHTML = obj.vech;
       cell6.innerHTML = obj.birth;
+
+      //success message
+      this.sucess_for.innerHTML = "Form successfully submitted";
+      setTimeout(function() {
+        this.sucess_for.innerHTML = "";
+      }, 3000);
     }
+
     this.users.push(obj);
     localStorage.setItem("user" + this.counter, obj);
     this.counter++; // creating unique id for each user
   },
   set: function() {
-    console.log("SET");
+    //console.log("SET");
     var obj = {};
 
     obj.fname = document.forms["myForm"]["fname"].value;
@@ -146,36 +158,32 @@ var handleSignup = {
 
   show_error: function() {
     if (this.error.fname) {
-      txt = document.createTextNode("Requried Field cannot be left blank");
-      this.firstname.appendChild(txt);
-      document.getElementById("fname").className = "err"; 
-
+      this.firstname.innerHTML = "hello";
+      this.firstinput.className = "err";
     } else {
-      document.getElementById("fname").className = "myclass";
-      firstname.removeChild(firstname.childNodes[0]);
+      this.firstinput.className = "myclass";
+      this.firstname.innerHTML = "";
     }
     if (this.error.lname) {
-      document.getElementById("lname").className = "err";
-      document.getElementById("lastname").innerHTML =
-        "Requried Field cannot be left blank";
+      this.lastinput.className = "err";
+      this.lastname.innerHTML = "hello2";
     } else {
-      document.getElementById("lastname").innerHTML = "";
-      document.getElementById("lname").className = "myclass";
+      this.lastname.innerHTML = "";
+      this.lastinput.className = "myclass";
     }
     if (this.error.email) {
-      document.getElementById("myemail").className = "err";
-      document.getElementById("email").innerHTML = "Invalid email";
+      this.input_email.className = "err";
+      this.email.innerHTML = "Invalid email";
     } else {
-      document.getElementById("email").innerHTML = "";
-      document.getElementById("myemail").className = "myclass";
+      this.email.innerHTML = "";
+      this.input_email.className = "myclass";
     }
-
     if (this.error.password) {
-      document.getElementById("pass_word").className = "err";
-      document.getElementById("password").innerHTML = "invalid password";
+      this.password.innerHTML = "Invalid password";
+      this.reppass.className = "err";
     } else {
-      document.getElementById("password").innerHTML = "";
-      document.getElementById("pass_word").className = "myclass";
+      this.password.innerHTML = "";
+      this.reppass.className = "myclass";
     }
   }
 };
