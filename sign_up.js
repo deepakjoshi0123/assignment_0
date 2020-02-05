@@ -1,12 +1,24 @@
+// function
 function selectElement(name) {
   console.log("TEST");
   return document.getElementById(name);
 }
 
-var firstname = "firstname";
-var customers = "customers";
-var lastname = "lastname";
-var email = "email";
+var  f_name = "firstname";
+var  f_input = "fname"; 
+
+var  customers = "customers";
+
+var  l_name = "lastname";
+var  l_input="lname";
+
+var  inp_email="email1";
+var  email = "email";  
+
+var  pass = "password";
+var  pas_inp = ""
+
+var  r_pass = "r_password";   
 
 var handleSignup = {
   // variables
@@ -15,9 +27,12 @@ var handleSignup = {
   error: {}, //to map error with respecting field
 
   //constants
-  firstname: selectElement(firstname),
-  lastname: selectElement(lastname),
+  firstname: selectElement(f_name),
+  firstinput: selectElement(fname),
+  lastname: selectElement(l_name),
   email: selectElement(email),
+  password: selectElement(pass),
+  reppass: selectElement(r_pass),
 
   /** checks postion of @ and . in email and predicts for valid or invalid mail
    *  Returns boolean value , true for valid mail false for invalid mail
@@ -133,12 +148,11 @@ var handleSignup = {
     if (this.error.fname) {
       txt = document.createTextNode("Requried Field cannot be left blank");
       this.firstname.appendChild(txt);
-      // console.log(document.getElementById("firstname").innerHTML);
+      document.getElementById("fname").className = "err"; 
 
-      document.getElementById("fname").className = "err";
     } else {
       document.getElementById("fname").className = "myclass";
-      document.getElementById("firstname").innerHTML = "";
+      firstname.removeChild(firstname.childNodes[0]);
     }
     if (this.error.lname) {
       document.getElementById("lname").className = "err";
